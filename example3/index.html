@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>floatとの関係</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc 100%),linear-gradient(45deg, #ccc 25%, white 25%, white 75%, #ccc 75%, #ccc 100%);
+      background-size: 16px 16px;
+      background-position: 0px 0px, 8px 8px;
+    }
+    .wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper > div {
+      width: 250px;
+      height: 250px;
+      text-align: center;
+      line-height: 250px;
+      margin-left: -75px;
+    }
+
+    .position{
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      background-color: #999999;
+      opacity: 0.8;
+    }
+
+    .float {
+      background-color: rgba(233, 229, 244, 0.85);
+      float: left;
+    }
+
+  </style>
+  <body>
+    <div class="wrapper">
+      <div class="position">
+        スタッキングコンテキスト
+      </div>
+      <div class="float">フロート要素</div>
+    </div>
+
+  </body>
+</html>
