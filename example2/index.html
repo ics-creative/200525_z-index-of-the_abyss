@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>z-indexたったの5</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      padding-top: 40px;
+    }
+    .wrapper {
+      position: relative;
+    }
+    .wrapper > div {
+      width: 250px;
+      height: 250px;
+      position: absolute;
+      text-align: center;
+      line-height: 250px;
+    }
+    .wrapper-freezer{
+      z-index: 1;
+    }
+    .freezer {
+      background-color: rgba(233, 229, 244, 0.85);
+      z-index: 530000;
+      top: 0;
+      left: -175px;
+    }
+    .mob {
+      position: absolute;
+      background-color: #f9f9f9;
+      z-index: 5;
+      top: 100px;
+      left: -75px;
+    }
+  </style>
+  <body>
+    <div class="wrapper wrapper-freezer">
+      <div class="freezer">私のz-indexは53万です</div>
+    </div>
+    <div class="wrapper wrapper-mob">
+      <div class="mob">z-indexたったの5</div>
+    </div>
+  </body>
+</html>
