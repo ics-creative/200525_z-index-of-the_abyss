@@ -289,7 +289,9 @@
           </div>
         </div>
         <p>
-          先程とは違い、positionの要素が先なので下側、transfromの要素が上にきています。しかし、positionにはスタッキングコンテキストは発生していませんので、その子のposition要素は
+          先程とは違い、positionの要素が先なので下側、transformの要素が上にきています。<br>
+          しかし、positionにはスタッキングコンテキストは発生していませんので、その子のposition要素のz-indexはtransformの要素と比べます。z-indexが1なので、transformの要素よりもさらに上にきます。<br>
+          つまり、親要素より上の要素を、子が上回ることになります。
         </p>
       </section>
     </main>
