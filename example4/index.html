@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>z-indexの負の値</title>
+    <title>floatとの関係</title>
   </head>
   <style>
     body {
@@ -10,8 +10,6 @@
       display: flex;
       justify-content: center;
       padding-top: 40px;
-      background-image: radial-gradient(#ccc 0,#ccc 2px, transparent 2px);
-      background-size: 16px 16px;
     }
     .wrapper {
       position: relative;
@@ -27,7 +25,7 @@
       margin-left: -75px;
     }
 
-    .position{
+    .position {
       position: absolute;
       top: 50px;
       left: 50px;
@@ -39,7 +37,6 @@
       background-color: rgba(233, 229, 244, 0.85);
       float: left;
     }
-
   </style>
   <body>
     <div class="wrapper">
@@ -48,6 +45,5 @@
       </div>
       <div class="float">フロート要素</div>
     </div>
-
   </body>
 </html>

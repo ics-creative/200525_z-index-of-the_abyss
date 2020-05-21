@@ -11,59 +11,54 @@
       position: absolute;
       z-index: 1;
       padding-top: 40px;
-      background-image: radial-gradient(#ccc 0, #ccc 2px, transparent 2px);
-      background-size: 16px 16px;
     }
-    .wrapper {
-      position: relative;
+    .section {
       width: 300px;
       margin: 0 auto 120px;
     }
 
-    .wrapper > .position,
-    .wrapper > .stacking-context {
-      width: 250px;
-      height: 250px;
-      text-align: center;
-      line-height: 250px;
+    .section8 .position-wrapper,.section9 .position-wrapper{
+      margin-left: -25px;
     }
 
-    .wrapper > h1 {
+    .section h1 {
       width: 500px;
       text-align: center;
       margin: 0 0 24px -100px;
       line-height: 1.2;
     }
 
-    .wrapper > p {
+    .section p {
       width: 300px;
-      margin: 350px 0 0;
+      margin: 16px 0 0;
       line-height: 1.2;
       font-weight: bold;
     }
 
-    .wrapper-flex {
-      height: auto;
-    }
-    .wrapper-stacking{
-      min-height: 350px;
-    }
-
-    .wrapper-flex p,
-    .wrapper-stacking p {
-      margin-top: 24px;
+    .position-wrapper {
+      position: relative;
+      min-height: 300px;
     }
 
     .position {
       position: absolute;
+      width: 250px;
+      height: 250px;
+      font-size: 15px;
+      text-align: center;
+      line-height: 250px;
     }
 
-    .position:first-of-type {
-      background-color: rgba(233, 229, 244, 0.85);
-    }
-
-    .position:last-of-type {
+    .position:last-of-type,
+    .flex-child:last-of-type,
+    .stacking-context:last-of-type{
       background-color: rgba(200, 200, 200, 0.85);
+    }
+
+    .position:first-of-type,
+    .flex-child:first-of-type,
+    .stacking-context:first-of-type {
+      background-color: rgba(233, 229, 244, 0.85);
     }
 
     .position1 {
@@ -72,45 +67,72 @@
 
     .position2 {
       z-index: 5;
-      top: 100px;
+      top: 50px;
       left: 50px;
     }
 
     .position3 {
       z-index: 10;
-      top: 100px;
-      left: 50px;
     }
 
     .position4 {
-      top: 100px;
+      z-index: 0;
+    }
+
+    .position5 {
+      z-index: 10;
+      top: 50px;
+      left: 50px;
+    }
+
+    .position6 {
+      top: 25px;
       left: 25px;
       z-index: -1;
     }
 
-    .position5 {
-      top: 100px;
+    .position7 {
+      top: 25px;
       left: 25px;
-      background-color: rgba(233, 229, 244, 0.85) !important;
     }
 
-    .z-index0 {
-      z-index: 0;
+    .position8{
+      z-index: 1;
+      top: 75px;
+      left: 75px;
+    }
+
+    .inner{
+      width: 75px;
+      height: 55px;
+      padding-top: 20px;
+      background-color: #cfc;
+      position: absolute;
+      line-height: 1.2;
     }
 
     .stacking-context {
-      margin-top: 50px;
-      margin-left: 50px;
-      background-color: rgba(200, 200, 200, 0.85);
-      opacity: 0.99;
+      width: 250px;
+      height: 250px;
+      font-size: 15px;
+      text-align: center;
+      line-height: 250px;
+    }
+
+    .stacking-context1 {
+      transform: translate(50px, 50px);
+    }
+
+    .stacking-context2 {
+      transform: translate(75px, -25px);
     }
 
     .under {
       display: block;
-      margin-top: 50px;
+      padding-top: 75px;
     }
 
-    .flex {
+    .flex-wrapper {
       width: 250px;
       display: flex;
       flex-wrap: wrap;
@@ -126,69 +148,79 @@
     }
 
     .flex-child1 {
-      background-color: rgba(233, 229, 244, 0.85);
       order: 2;
     }
 
     .flex-child2 {
-      background-color: rgba(200, 200, 200, 0.85);
       order: 1;
       margin-bottom: -50px;
     }
   </style>
   <body>
     <main>
-      <section class="wrapper">
+      <section class="section section1">
         <h1>z-indexがあるもの同士</h1>
-        <div class="position position1">
-          z-index:10
-        </div>
-        <div class="position position2">
-          z-index:5
+        <div class="position-wrapper">
+          <div class="position position1">
+            z-index:10
+          </div>
+          <div class="position position2">
+            z-index:5
+          </div>
         </div>
         <p>
           ごく普通にz-indexの値が大きいものが上になります。
         </p>
       </section>
-      <section class="wrapper wrapper-stacking">
+
+      <section class="section section2">
         <h1>z-indexがあるものとないもの</h1>
-        <div class="position position1">
-          z-index:10
-        </div>
-        <div class="stacking-context">
-          opacity: 0.99
+        <div class="position-wrapper">
+          <div class="position position3">
+            z-index:10
+          </div>
+          <div class="stacking-context stacking-context1">
+            transform:translate(50px,50px)
+          </div>
         </div>
         <p>
           z-indexが1以上のものと、その他のスタッキングコンテキストを比べたら、z-indexがある要素が上になります。
         </p>
       </section>
-      <section class="wrapper wrapper-stacking">
+
+      <section class="section section3">
         <h1>z-indexが0とないもの</h1>
-        <div class="position z-index0">
-          z-index:0
-        </div>
-        <div class="stacking-context">
-          opacity: 0.99
+        <div class="position-wrapper">
+          <div class="position position4">
+            z-index:0
+          </div>
+          <div class="stacking-context stacking-context1">
+            transform:translate(50px,50px)
+          </div>
         </div>
         <p>
           z-indexが0だと、要素の出現順で後のものが上になります。
         </p>
       </section>
-      <section class="wrapper">
+
+      <section class="section section4">
         <h1>z-indexが同じ値</h1>
-        <div class="position position1">
-          z-index:10
-        </div>
-        <div class="position position3">
-          z-index:10
+        <div class="position-wrapper">
+          <div class="position position1">
+            z-index:10
+          </div>
+          <div class="position position5">
+            z-index:10
+          </div>
         </div>
         <p>
           z-indexの値が同じ場合は要素の出現順で後のものが上になります。
         </p>
       </section>
-      <section class="wrapper wrapper-flex">
+
+      <section class="section section5">
         <h1>z-indexが同じ値（order）</h1>
-        <div class="flex">
+        <div class="flex-wrapper">
           <div class="flex-child flex-child1">
             z-index:10、order:2
           </div>
@@ -200,36 +232,64 @@
           orderプロパティを使って出現順を入れ替えた場合、order順が後のものが上になります。
         </p>
       </section>
-      <section class="wrapper">
+      <section class="section section6">
         <h1>z-indexが負でも<br />親スタックより後ろにはいけない</h1>
-        <div class="position position4">
-          z-index:-1
+        <div class="position-wrapper">
+          <div class="position position6">
+            z-index:-1
+          </div>
         </div>
         <p>
           bodyにスタッキングコンテキストが発生しているので、それより後ろには配置できません。
         </p>
       </section>
-      <section class="wrapper wrapper-stacking">
+
+      <section class="section section7">
         <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う1</h1>
-        <span class="under">下のレイヤーの文</span>
-        <div class="position position5">
-          z-index:auto
+        <div class="position-wrapper">
+          <span class="under">下のレイヤーの文</span>
+          <div class="position position7">
+            z-index:auto
+          </div>
         </div>
         <p>
           positionを指定したら、スタッキングコンテキストのように重なる
         </p>
       </section>
-      <section class="wrapper wrapper-stacking">
+
+      <section class="section section8">
         <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う2</h1>
-        <span class="under">下のレイヤーの文</span>
-        <div class="stacking-context">
-          opacity:0.99
-        </div>
-        <div class="position position5">
-          z-index:auto
+        <div class="position-wrapper">
+          <span class="under">下のレイヤーの文</span>
+          <div class="stacking-context stacking-context2">
+            transform:translate(50px,50px)
+          </div>
+          <div class="position position7">
+            z-index:auto
+          </div>
         </div>
         <p>
-          z-index:autoの高低関係はz-index:0の挙動と同じ。後の要素が上になります。
+          z-index:autoの高低関係はz-index:0の挙動と同じ。後の要素が上になります。<br />
+          スタッキングコンテキストは発生していませんが、要素順でpositionの方が後なのでtranslateの要素より上に来ます。
+        </p>
+      </section>
+
+      <section class="section section9">
+        <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う3</h1>
+        <div class="position-wrapper">
+          <span class="under">下のレイヤーの文</span>
+          <div class="position position7">
+            z-index:auto
+            <div class="inner position8">
+              positionの子要素
+            </div>
+          </div>
+          <div class="stacking-context stacking-context2">
+            transform:translate(50px,50px)
+          </div>
+        </div>
+        <p>
+          先程とは違い、positionの要素が先なので下側、transfromの要素が上にきています。しかし、positionにはスタッキングコンテキストは発生していませんので、その子のposition要素は
         </p>
       </section>
     </main>
