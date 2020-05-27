@@ -13,31 +13,30 @@
       padding-top: 40px;
     }
     .section {
-      width: 300px;
+      width: 500px;
       margin: 0 auto 120px;
+      padding: 48px 64px 64px;
+      background-color: #f7f7f7;
     }
 
-    .section8 .position-wrapper,.section9 .position-wrapper{
-      margin-left: -25px;
-    }
 
     .section h1 {
-      width: 500px;
       text-align: center;
-      margin: 0 0 24px -100px;
+      margin: 0 0 24px;
       line-height: 1.2;
+
     }
 
     .section p {
-      width: 300px;
-      margin: 16px 0 0;
-      line-height: 1.2;
-      font-weight: bold;
+      margin: 24px 0 0;
+      line-height: 1.5;
     }
 
     .position-wrapper {
       position: relative;
+      width: 300px;
       min-height: 300px;
+      margin: 0 auto;
     }
 
     .position {
@@ -96,21 +95,6 @@
       left: 25px;
     }
 
-    .position8{
-      z-index: 1;
-      top: 75px;
-      left: 75px;
-    }
-
-    .inner{
-      width: 75px;
-      height: 55px;
-      padding-top: 20px;
-      background-color: #cfc;
-      position: absolute;
-      line-height: 1.2;
-    }
-
     .stacking-context {
       width: 250px;
       height: 250px;
@@ -158,7 +142,7 @@
   </style>
   <body>
     <main>
-      <section class="section section1">
+      <section class="section section1" id="section1">
         <h1>z-indexがあるもの同士</h1>
         <div class="position-wrapper">
           <div class="position position1">
@@ -173,7 +157,7 @@
         </p>
       </section>
 
-      <section class="section section2">
+      <section class="section section2" id="section2">
         <h1>z-indexがあるものとないもの</h1>
         <div class="position-wrapper">
           <div class="position position3">
@@ -188,7 +172,7 @@
         </p>
       </section>
 
-      <section class="section section3">
+      <section class="section section3" id="section3">
         <h1>z-indexが0とないもの</h1>
         <div class="position-wrapper">
           <div class="position position4">
@@ -203,7 +187,7 @@
         </p>
       </section>
 
-      <section class="section section4">
+      <section class="section section4" id="section4">
         <h1>z-indexが同じ値</h1>
         <div class="position-wrapper">
           <div class="position position1">
@@ -218,7 +202,7 @@
         </p>
       </section>
 
-      <section class="section section5">
+      <section class="section section5" id="section5">
         <h1>z-indexが同じ値（order）</h1>
         <div class="flex-wrapper">
           <div class="flex-child flex-child1">
@@ -232,19 +216,19 @@
           orderプロパティを使って出現順を入れ替えた場合、order順が後のものが上になります。
         </p>
       </section>
-      <section class="section section6">
+      <section class="section section6" id="section6">
         <h1>z-indexが負でも<br />親スタックより後ろにはいけない</h1>
-        <div class="position-wrapper">
+        <div class="position-wrapper" style="z-index: 1">
           <div class="position position6">
             z-index:-1
           </div>
         </div>
         <p>
-          bodyにスタッキングコンテキストが発生しているので、それより後ろには配置できません。
+          親要素（position-wrapper）にスタッキングコンテキストが発生しているので、それより後ろには配置できません。
         </p>
       </section>
 
-      <section class="section section7">
+      <section class="section section7" id="section7">
         <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う1</h1>
         <div class="position-wrapper">
           <span class="under">下のレイヤーの文</span>
@@ -257,7 +241,7 @@
         </p>
       </section>
 
-      <section class="section section8">
+      <section class="section section8" id="section8">
         <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う2</h1>
         <div class="position-wrapper">
           <span class="under">下のレイヤーの文</span>
@@ -274,26 +258,7 @@
         </p>
       </section>
 
-      <section class="section section9">
-        <h1>z-indexがなくても<br />スタッキングコンテキストっぽく振る舞う3</h1>
-        <div class="position-wrapper">
-          <span class="under">下のレイヤーの文</span>
-          <div class="position position7">
-            z-index:auto
-            <div class="inner position8">
-              positionの子要素
-            </div>
-          </div>
-          <div class="stacking-context stacking-context2">
-            transform:translate(50px,50px)
-          </div>
-        </div>
-        <p>
-          先程とは違い、positionの要素が先なので下側、transformの要素が上にきています。<br>
-          しかし、positionにはスタッキングコンテキストは発生していませんので、その子のposition要素のz-indexはtransformの要素と比べます。z-indexが1なので、transformの要素よりもさらに上にきます。<br>
-          つまり、親要素より上の要素を、子が上回ることになります。
-        </p>
-      </section>
+
     </main>
   </body>
 </html>

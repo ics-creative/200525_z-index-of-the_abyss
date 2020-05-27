@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>transitionで急に発生する</title>
+    <title>予期せぬ重なり</title>
   </head>
   <style>
     body {
@@ -11,14 +11,69 @@
       justify-content: center;
       padding-top: 40px;
     }
-    .wrapper {
-      position: relative;
-      display: flex;
-      justify-content: center;
+
+    .section {
+      width: 300px;
+      margin: 0 auto 120px;
     }
 
+    .section > h1 {
+      width: 500px;
+      text-align: center;
+      margin: 0 0 24px -100px;
+      line-height: 1.2;
+    }
+
+    .section .description{
+      width: 500px;
+      margin: 24px 0 0 -100px;
+      line-height: 1.5;
+    }
+
+    .position-wrapper {
+      position: relative;
+      min-height: 300px;
+    }
+
+
+    .position {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 250px;
+      font-size: 15px;
+      text-align: center;
+      line-height: 250px;
+      background-color: rgba(200, 200, 200, 0.85);
+    }
+
+
+    .inner{
+      position: absolute;
+      z-index: 1;
+      top: 30px;
+      left: 30px;
+      width: 75px;
+      height: 55px;
+      padding-top: 20px;
+      background-color: #cfc;
+      line-height: 1.2;
+    }
+
+    .stacking-context {
+      width: 250px;
+      height: 250px;
+      font-size: 15px;
+      text-align: center;
+      line-height: 250px;
+      background-color: rgba(233, 229, 244, 0.85);
+      transform: translate(50px, 25px);
+    }
+
+
     .card{
-      width: 320px;
+      width: 300px;
       position: relative;
     }
 
@@ -36,11 +91,11 @@
       border-radius: 14px;
     }
 
-    .inner{
+    .card-inner{
       transition: opacity 0.2s;
     }
 
-    .inner:hover{
+    .card-inner:hover{
       opacity: 0.7;
     }
 
@@ -53,7 +108,7 @@
       margin: 0 0 8px;
     }
 
-    .description{
+    .article-description{
       margin: 0;
     }
 
@@ -61,15 +116,39 @@
   </style>
   <body>
     <div class="wrapper">
-      <div class="card">
-        <div class="new">NEW</div>
-        <div class="inner">
-          <img src="../images/demo_image.jpg" alt="" width="320" class="image">
-          <h1 class="title">記事タイトル</h1>
-          <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum perferendis repellendus ullam. Ipsam laborum magni repudiandae. Assumenda, consequatur consequuntur debitis dignissimos, dolorem ea eligendi ipsam nostrum odit placeat quia, voluptatum?</p>
+      <section class="section" id="section1">
+        <h1>俺の屍を越えてゆけ現象</h1>
+        <div class="position-wrapper">
+          <span class="under">下のレイヤーの文</span>
+          <div class="position">
+            z-index:auto
+            <div class="inner">
+              positionの子要素
+            </div>
+          </div>
+          <div class="stacking-context">
+            transform:translate(50px,50px)
+          </div>
         </div>
+        <p class="description">
+          positionの要素が先なので下側、transformの要素が上にきています。<br>
+          しかし、positionにはスタッキングコンテキストは発生していませんので、その子のposition要素のz-indexはtransformの要素と比べます。z-indexが1なので、transformの要素よりもさらに上にきます。<br>
+          つまり、親要素より上の要素を、子が上回ることになります。
+        </p>
+      </section>
 
-      </div>
+      <section class="section" id="section2">
+        <h1>ホバーでスタッキングコンテキストが発生</h1>
+        <div class="card">
+          <div class="new">NEW</div>
+          <div class="card-inner">
+            <img src="../images/demo_image.jpg" alt="" width="300" class="image">
+            <h1 class="title">記事タイトル</h1>
+            <p class="article-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum perferendis repellendus ullam. Ipsam laborum magni repudiandae. Assumenda, consequatur consequuntur debitis dignissimos, dolorem ea eligendi ipsam nostrum odit placeat quia, voluptatum?</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </body>
 </html>
