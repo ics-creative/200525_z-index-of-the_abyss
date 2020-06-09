@@ -45,7 +45,12 @@
       height: 250px;
       font-size: 15px;
       text-align: center;
-      line-height: 250px;
+    }
+
+    .innerText{
+      display: block;
+      margin-top: 44%;
+      line-height: 1.5;
     }
 
     .position:last-of-type,
@@ -146,10 +151,10 @@
         <h1>z-indexがあるもの同士</h1>
         <div class="position-wrapper">
           <div class="position position1">
-            z-index:10
+            <span class="innerText">z-index:10</span>
           </div>
           <div class="position position2">
-            z-index:5
+            <span class="innerText">z-index:5</span>
           </div>
         </div>
         <p>
@@ -161,7 +166,7 @@
         <h1>z-indexがあるものとないもの</h1>
         <div class="position-wrapper">
           <div class="position position3">
-            z-index:10
+            <span class="innerText">z-index:10</span>
           </div>
           <div class="stacking-context stacking-context1">
             transform:translate(50px,50px)
@@ -176,7 +181,7 @@
         <h1>z-indexが0とないもの</h1>
         <div class="position-wrapper">
           <div class="position position4">
-            z-index:0
+            <span class="innerText">z-index:0</span>
           </div>
           <div class="stacking-context stacking-context1">
             transform:translate(50px,50px)
@@ -191,10 +196,10 @@
         <h1>z-indexが同じ値</h1>
         <div class="position-wrapper">
           <div class="position position1">
-            z-index:10
+            <span class="innerText"> z-index:10</span>
           </div>
           <div class="position position5">
-            z-index:10
+            <span class="innerText">z-index:10</span>
           </div>
         </div>
         <p>
@@ -220,7 +225,7 @@
         <h1>z-indexが負でも<br />親スタックより後ろにはいけない</h1>
         <div class="position-wrapper" style="z-index: 1">
           <div class="position position6">
-            z-index:-1
+            <span class="innerText">z-index:-1</span>
           </div>
         </div>
         <p>
@@ -233,7 +238,7 @@
         <div class="position-wrapper">
           <span class="under">下のレイヤーの文</span>
           <div class="position position7">
-            z-index:auto
+            <span class="innerText">position:absolute <br> z-index:auto</span>
           </div>
         </div>
         <p>
@@ -249,7 +254,7 @@
             transform:translate(50px,50px)
           </div>
           <div class="position position7">
-            z-index:auto
+            <span class="innerText">position:absolute <br>z-index:auto</span>
           </div>
         </div>
         <p>
